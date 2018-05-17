@@ -1,0 +1,726 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{week2}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Week 2 Overview}\label{week-2-overview}
+
+During this week's lessons, you will learn more about word association
+mining with a particular focus on mining the other basic form of word
+association (i.e., syntagmatic relations), and start learning topic
+analysis with a focus on techniques for mining one topic from text.
+
+    \subsection{Goals and Objectives}\label{goals-and-objectives}
+
+After you actively engage in the learning experiences in this module,
+you should be able to:
+
+\begin{itemize}
+\tightlist
+\item
+  Explain how to discover syntagmatic relations from text data
+\item
+  Explain the computation task of mining and analyzing topics in text
+  data, particularly its input and the expected output.
+\item
+  Explain the problems with defining a topic as just one term when
+  mining and analyzing topics in text data.
+\item
+  Explain the limitations of using one term to represent a topic and how
+  they can be addressed by representing a topic as a distribution over
+  words.
+\item
+  Explain basic concepts in statistical language models such as
+  ``language model'', ``unigram language model'', ``likelihood'',
+  Maximum Likelihood estimate.
+\item
+  Explain how to mine one topic from a text document, i.e., estimate a
+  unigram language model
+\end{itemize}
+
+    \subsection{Key Concepts}\label{key-concepts}
+
+\begin{itemize}
+\tightlist
+\item
+  Entropy
+\item
+  Conditional entropy
+\item
+  Mutual information
+\item
+  Topic and coverage of topic
+\item
+  Language model
+\item
+  Generative model
+\item
+  Unigram language model
+\item
+  Word distribution
+\item
+  Background language model
+\item
+  Parameters of a probabilistic model
+\item
+  Likelihood
+\item
+  Bayes rule
+\item
+  Maximum likelihood estimation
+\item
+  Prior and posterior distributions
+\item
+  Bayesian estimation \& inference
+\item
+  Maximum a posteriori (MAP) estimate
+\item
+  Prior model
+\item
+  Posterior mode
+\end{itemize}
+
+    \subsection{Guiding Questions}\label{guiding-questions}
+
+Develop your answers to the following guiding questions while watching
+the video lectures throughout the week.
+
+\begin{itemize}
+\tightlist
+\item
+  What is entropy? For what kind of random variables does the entropy
+  function reach its minimum and maximum, respectively? Let: (*)
+  \textbf{Probabilies} here means frequencies of outcomes in random
+  experiments. (*) An \textbf{Ensemble} \(X\) is a triple
+  \((x, Ax, Px)\), where the \emph{outcome} \(x\) is the value of a
+  random variable, which takes on one of a set of possible values,
+  \(Ax=(a_1, a_2, ..., a_i, ..., a_I)\), having probabilities
+  \(Px(p_1, p_2, ..., p_I)\), with \(P(x=a_i)=p_i,p_i \geq 0\) and
+  \(\sum_{a_i \in Ax} P(x=a_i)=1\). (*) The Shannon \textbf{Information
+  Content} of an outcome \(x\) is defined to be: \[\eqalign{
+  h(x) &= log_2 \frac{1}{P(x)} \ \text{bits}\\
+       &= -log_2 P(x) \ \text{bits}
+  }\] Then: (*) The \textbf{Entropy of an ensemble} \(X\) is defined to
+  be the average Shannon information content of an outcome:
+  \[H(X) = -\sum\limits_{x \in Ax} P(x) \ log_2 P(x) \ \text{bits}\]
+  \(H(X)\) is \textbf{minimum} when \(P(x)=0\), so that:
+  \[H(X) = - \sum\limits_{x \in Ax} 0 * log_2 0 \equiv 0\] since
+  \(lim_{\theta \rightarrow 0^-} -\theta log_2 \theta = 0\) and
+  \(lim_{\theta \rightarrow 0^+} \theta log_2 1/\theta = 0\) \(H(X)\) is
+  \textbf{maximum} when \(P(x)=1/|x|\), so that:
+  \[H(X) = - \sum\limits_{x \in Ax} \frac{1}{|x|} * log_2 \frac{1}{|x|} = log_2 \frac{1}{|x|}\]
+  For further explanation, please read
+  \href{https://www.amazon.com/Information-Theory-Inference-Learning-Algorithms/dp/0521642981}{Information
+  Theory Inference Learning Algorithms} at page 32. 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is conditional entropy? Let: (*) \textbf{Joint probability} is
+  probability that event \(X\) and event \(Y\) occurred together at the
+  same time: \[\eqalign{
+  P(X, Y) &= \frac{\sum\limits_{y \in A_x} y=Y}{N}\\
+  P(X, Y) &= \frac{f_X(Y)}{N}
+  }\] (*) \textbf{Conditional probability} beautifuly defined by
+  \href{https://en.wikipedia.org/wiki/Andrey_Kolmogorov}{Kolmogorov} is
+  projection of \(f_X(Y)\) in the space \(Y\): \[\eqalign{
+  P(X|Y) &= \frac{f_X(Y)}{Y}\\
+  &= \frac{P(X,Y)/N}{P(Y)/N}\\
+  &= \frac{P(X,Y)}{P(Y)}
+  }\] (*) \textbf{Bayes rule} tells us about corelation between joint
+  probability and conditional probability:
+  \[P(X|Y)P(Y) = P(X,Y) = P(Y|X)P(X)\] (*) \textbf{Joint entropy} is
+  entropy of joint ensembles \(X\) and \(Y\): \[\eqalign{
+  H(X,Y) &= -\sum\limits_{x \in A_x}\sum\limits_{y \in A_y} P(x,y) \ log_2 \ P(x,y)\\
+         &= -E \ log_2 \ P(X,Y)
+  }\] Then: (*) \textbf{Conditional entropy} is entropy of conditional
+  ensembles \(X\) and \(Y\) or by expand Kolmogorov definition, how much
+  bits we need to encode uncertainty of each
+  \(P(y, x) \ \text{in} \ 1/P(x|y) \ bits \ \text{where} \ yx \in A_yA_x\):
+  \[\eqalign{
+  H(X|Y) &= \sum\limits_{y \in A_y} P(y) \ H(X|Y=y)\\
+         &= - \sum\limits_{y \in A_y} P(y) \sum\limits_{x \in A_x} P(x|y) \ log_2 \ P(x|y)\\
+         & \text{apply bayes rule}\\
+         &= - \sum\limits_{y \in A_y}\sum\limits_{x \in A_x} P(y,x) \ log_2 \ P(x|y)\\
+         &= - E \ log_2 \ P(X|Y)
+  }\] For further explanation, please read
+  \href{https://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954}{Elements
+  of Information Theory} at page 16-17. 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is the relation between conditional entropy H(X\textbar{}Y) and
+  entropy H(X)? Which is larger? Let:
+
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    \(H(X)\) is uncertainty of \(X\) encoded in \(1/P(X) \ bits\), so
+    that \(H(X) \leq log_2 1/P(X)\)
+  \item
+    \(H(Y)\) is uncertainty of \(Y\) encoded in \(1/P(Y) \ bits\), so
+    that \(H(Y) \leq log_2 1/P(Y)\)
+  \item
+    \(H(X,Y)\) is joint of uncertainties of \(X \cap Y\) in
+    \(1/P(X,Y) \ bits\), so that \(H(X,Y) \leq log_2 1/P(X,Y)\)
+  \item
+    \(H(Y,X)\) is joint of uncertainties of \(Y \cap X\) in
+    \(1/P(Y,X) \ bits\), so that \(H(Y,X) \leq log_2 1/P(Y,X)\) We know
+    that: (*) \(H(X|Y)\) is conditional of uncertainties of \(X\) given
+    known event of \(Y\) in \(1/P(X|Y) \ bits\), so that
+    \(H(X|Y) \leq log_2 1/P(X|Y)\) (*) Based on bayes rule, if we know
+    \(H(Y,X)\) then we know about \(H(X|Y)\) and \(H(Y)\): \[\eqalign{
+    H(Y,X) &= -\sum\limits_{y \in A_y} \sum\limits_{x \in A_x} P(y, x) \ log_2 \ P(y,x)\\
+       &= -\sum\limits_{y \in A_y} \sum\limits_{x \in A_x} P(y, x) \ log_2 \ P(y) \ P(x|y)\\
+       &= -\sum\limits_{y \in A_y} \sum\limits_{x \in A_x} P(y,x) \ log_2 \ P(y) -\sum\limits_{y \in A_y} \sum\limits_{x \in A_x} P(y,x) \ log_2 \ P(x|y)\\
+       &= -\sum\limits_{y \in A_y} P(y) \ log_2 \ P(y) - \sum\limits_{y \in A_y} \sum\limits_{x \in A_x} P(y,x) \ log_2 \ P(x|y)\\
+       &= H(Y) + H(X|Y)
+    }\] (*) Rule above also apply for \(H(X,Y)\):
+    \[H(X,Y) = H(X) + H(Y|X)\] Then: (*)
+    \(H(X|Y) \leq H(Y) \leq H(Y,X)\) (*)
+    \(H(Y|X) \leq H(X) \leq H(X,Y)\) (*) This innequalities will be
+    disscussed further in mutual information. 
+  \end{enumerate}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  How can conditional entropy be used for discovering syntagmatic
+  relations? Let: (*) An \textbf{Ensemble W} is a triple
+  \((w, A_w, P_w)\) where \emph{outcome} of word \(w\) is the random
+  word, which takes on one of a set of possible values,
+  \(A_w = (a_1, a_2, a_3, ..., a_I)\), having probabilities
+  \(P_w = (p_1, p_2, p_3, ..., p_I)\), which
+  \(P(w=a_i)=p_i, \ p_i \geq 0\) and \(\sum_{a_i \in A_w} P(w=a_i) = 1\)
+  (*) \(WORDS\) is set of words \(\{w_1, w_2, w_3, ..., w_I\}\) (*)
+  \(WORDS^x\) subset of \(WORDS\) which contains unknown words, such
+  that
+  \(\{w_1, w_2, ..., w_H \ | \ w \in WORDS^x \}, WORDS^x \subset WORDS\)
+  (*) \(WORDS^{-x}\) is reduced set of \(WORDS\) which contains known
+  words, such that \(\{w_1, w_2, ..., w_J \ | \ w_j \notin WORDS^x \}\)
+  We want to know: (*) Information about unkown word \(w_h\) given by
+  set of known words \(\{w \ | \ w_j \in WORDS^{-x}\}\), such that
+  \(H(w_h \ | \ w_j)\) Assume: (*) \(A_w\) is boolean values indicate
+  whether each word \(\{w_i \ | \ w_i \in WORDS\}\) is present or not,
+  such that \(A_w = \{0, 1\}\) Then: (*) If the word \(w_j\) is known
+  always present, then information about unknown word \(w_h\):
+  \[H(w_h \ | \ w_j=1) = -\sum\limits_{a_i \in A_w} P(w_h = a_i \ | \ w_j = 1) \ log_2 \ P(w_h = a_i \ | \ w_j = 1)\]
+  (*) If the word \(w_j\) is known always not present, then information
+  about unknown word \(w_h\):
+  \[H(w_h \ | \ w_j=0) = -\sum\limits_{a_i \in A_w} P(w_h = a_i \ | \ w_j = 0) \ log_2 \ P(w_h = a_i \ | \ w_j = 0)\]
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is mutual information I(X;Y)? How is it related to entropy H(X)
+  and conditional entropy H(X\textbar{}Y)? Let: (*) \(P(x)\) and
+  \(Q(y)\) are two different probability distributions defined on the
+  set of possible values, \(Ax=(a_1, a_2, ..., a_i, ..., a_I)\). (*) The
+  \textbf{Relative Entropy} or \textbf{Kullback-Leibler divergence}
+  between \(P(x)\) and \(Q(x)\) is: \[\eqalign{
+  D_{KL}(P||Q) &= \sum\limits_{x} P(x) log_2 \frac{P(x)}{Q(x)}\\
+               &= E_p log_2 \frac{P(x)}{Q(x)}
+  }\] which satisfies \textbf{Gibbs' inequality}:
+  \[D_{KL}(P||Q) \geq 0\] with equality if only if \(P = Q\) and if
+  \(P(x) > 0\) and \(Q(x) = 0\), then \(D_{KL}(P||Q) = \infty\) (*)
+  \textbf{Kullback-Leibler divergence} is asymetric distance, such that:
+  \[D_{KL}(P||Q) \neq D_{KL}(Q||P)\] (*) \textbf{Mutual Information}
+  \(I(X; Y)\) is the relative entropy between the joint distribution and
+  the product distribution \(p(x)p(y)\): \[\eqalign{
+  I(X;Y) &= \sum\limits_{x \in Ax}\sum\limits_{y \in Ay} P(x,y) log_2 \frac{P(x,y)}{P(x)P(y)}\\
+         &= D_{LK}(P(x,y)||P(x)P(y))\\
+         &= E_{P(x,y)} log_2 \frac{P(X,Y)}{P(X)P(Y)}
+  }\] Then: (*) \textbf{Relationship between Entropy and Mutual
+  Information} can be revealed by decomposing mutual information
+  formula: \[\eqalign{
+  I(X;Y) &= \sum\limits_{x,y} P(x,y) log_2 \frac{P(x,y)}{P(x)P(y)}\\
+         &= \sum\limits_{x,y} P(x,y) log_2 \frac{P(x|y)}{p(x)}\\
+         &= -\sum\limits_{x,y} P(x,y) log_2 P(x) + \sum\limits_{x,y} P(x,y) log_2 P(x|y)\\
+         &= -\sum\limits_{x} P(x) log_2 P(x) - \big(-\sum\limits_{x,y} P(x,y) log P(x|y) \big)\\
+         &= H(X) - H(X|Y)
+  }\] For further explanation, please read
+  \href{https://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954}{Elements
+  of Information Theory} at page 19-30. 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What's the minimum value of I(X;Y)? Is it symmetric? (*) Mutual
+  information has symetry relationship, such that:
+  \[I(X;Y)=H(X)-H(X|Y)=H(Y)-H(Y|X)=I(Y;X)\] \textbf{Proof}: Let expand
+  previous mutual information equation with respect tu \(Y\):
+  \[\eqalign{
+  I(X;Y) &= \sum\limits_{x,y}P(x,y) log_2 \frac{P(x,y)}{P(x)P(y)}\\
+         &= \sum\limits_{x,y}P(x,y) log_2 \frac{P(x,y)}{P(x)} - \sum\limits_{x,y}P(x,y) log_2 P(y)\\
+         &= \sum\limits_{x,y}P(x) P(y|x) log_2 P(y|x) - \sum\limits_{x,y} log_2 P(y) P(x,y)\\
+         &= \sum\limits_{x} P(x) \big( \sum\limits_{y} P(y|x) log_2 P(y|x) \big) - \sum\limits_{y} log_2 P(y)\\
+         &= -H(Y|X) + H(Y)\\
+         &= H(Y) - H(Y|X)
+  }\] (*) Since: \[\eqalign{
+  H(X,Y) &= H(X) + H(Y|X)\\
+  H(Y,X) &= H(Y) + H(X|Y)
+  }\] thus,we have: \[I(X;Y) = H(X) + H(Y) - H(X,Y)\] (*) Follow the
+  Gibb's inequality on Relative Entropy, Mutual Information satisfies
+  Jensen's inequality: \[I(X;Y) \geq 0\] with equality if only if \(X\)
+  and \(Y\) are independent. 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  For what kind of X and Y, does mutual information I(X;Y) reach its
+  minimum? For a given X, for what Y does I(X;Y) reach its maximum? (*)
+  Since mutual information is non-negative, then the minimum value is
+  \(I(X;Y) = 0\). (*) Mutual information reach its minimum if only if
+  \(X\) and \(Y\) are independent, such that \(P(x,y) = p(x)p(y)\):
+  \[\eqalign{
+  I(X;Y) &= \sum\limits_{x,y}P(x,y) log_2 \frac{P(x,y)}{P(x)P(y)}\\
+         &= \sum\limits_{x,y}P(x,y) log_2 1\\
+         &= \sum\limits_{x,y}P(x,y) 0\\
+         &= 0
+  }\] (*) Let expand the mutual information inequality into a throrem:
+  \[0 \leq I(X;Y) = H(X) - H(X|Y)\] the theorem above tells us that
+  knowing another random variable \(Y\) can only reduce the uncertainty
+  in \(X\). Note that this is true only on the average. Specially,
+  \(H(X|Y=y)\) may be greate than or less than or equal to \(H(x)\), but
+  on the average \(H(X|Y) = \sum_y P(y) H(X|Y=y) \leq H(X)\). (*) Mutual
+  information also reach its maximum if only if it contains itself, such
+  that \(I(X;X) = H(X)\) 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  Why is mutual information sometimes more useful for discovering
+  syntagmatic relations than conditional entropy?
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Conditional entropy only compute each pair of word probability and
+    not comparable, such as: \[H(w_h \ | \ w_j) \neq H(w_i \ | \ w_j)\] 
+  \item
+    Mutual information is more general than conditional entropy: Given
+    two probabiliy distribution \(P(X)\) and \(Q(X)\), know one of them
+    wen can also know all of them, such that:
+    \[I(X;Y)=H(X)-H(X|Y)=H(Y)-H(Y|X)=I(Y;X)\] 
+  \end{enumerate}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is a topic? Topic is main idea of a document. 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  How can we define the task of topic mining and analysis
+  computationally? What's the input? What's the output? Input: (*) \(N\)
+  indicate number of collections. (*) \(C=\{d_1, ..., d_N\}\) is a
+  collection of document (*) \(k\) indicate desired number of topics.
+  Output: (*) \(k\) number topics \(\{\theta_1, ..., \theta_k\}\) (*)
+  Coverage of topics in each document:
+  \(d_i = \{\Pi_{i1}, ..., \Pi_{ik}\}\) (*) \(\Pi_{ij}\) is probability
+  of \(d_i\) covering topic \(\theta_j\), such as:
+  \[\sum\limits_{j=1}^k \Pi_{ij} = 1\] 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  How can we heuristically solve the problem of topic mining and
+  analysis by treating a term as a topic? What are the main problems of
+  such an approach? There are step by step approach to do topic mining
+  and analysis by treating a term as a topic: - Parse text in colection
+  \(C\) to obtain candidate term, e.g: term = word or term = phrase. -
+  Design a term scoring scoring function, e.g: TF-IDF, domain specific
+  heuristics (favor title words, hashtag, etc). - Pick \(k\) terms with
+  the highest scores, but try to minimize redudancy, e.g: Using WordNet
+  to find synonyms, latent semantic indexing to find corelation between
+  words. Problem with "term as topic": - Does not have broad vocabulary
+  coverage, e.g: related words. - Can not detect word ambiguity, e.g:
+  "basketball star" vs "star in the sky". 
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What are the benefits of representing a topic by a word distribution?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Used multiple words to describe complicated topic.
+  \item
+    Used word weighting to model subtle semantic variations of a topic. 
+  \end{itemize}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is a statistical language model? What is a unigram language
+  model? How can we compute the probability of a sequence of words given
+  a unigram language model?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The statistical language model is model use probability distribution
+    over word sequences. Alse called as generative model.
+  \item
+    Unigram language model is a model which treat each word
+    independently. Thus, a probability of text "today is wed" is:
+    \[P("\text{today is wed}") = P("\text{today}")P("\text{is}")P("\text{wed}")\]
+  \end{itemize}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is Maximum Likelihood estimate of a unigram language model given
+  a text article?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Maximum likehood is find the best probability \(P\) to describe a
+    topic \(\theta\), such that:
+    \[\hat{\theta} = arg \ max_{\theta} P(X|\theta)\] 
+  \end{itemize}
+\end{itemize}
+
+    \begin{itemize}
+\tightlist
+\item
+  What is the basic idea of Bayesian estimation? What is a prior
+  distribution? What is a posterior distribution? How are they related
+  with each other? What is Bayes rule?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The basic idea of Bayesia Estimation is find the best estimation
+    based on initial probability. Or in another word, compute posterior
+    believe based on priori knowledge about evidence, such that:
+    \[\eqalign{
+    \hat{\theta} &= arg \ max_{\theta} P(\theta|X)\\
+             &= arg \ max_{\theta} P(X|\theta)P(\theta)
+    }\] 
+  \item
+    \(P(\theta)\) is Prior distribution.
+  \item
+    \(P(\theta|X)\) is posterior distribution.
+  \item
+    \(P(\theta)\) need to be defined before compute \(P(\theta|X)\).
+  \item
+    \textbf{Bayes rule} tells us about corelation between joint
+    probability and conditional probability:
+    \[P(X|Y)P(Y) = P(X,Y) = P(Y|X)P(X)\] 
+  \end{itemize}
+\end{itemize}
+
+    \subsection{Additional Readings and
+Resources}\label{additional-readings-and-resources}
+
+\begin{itemize}
+\tightlist
+\item
+  C. Zhai and S. Massung. Text Data Management and Analysis: A Practical
+  Introduction to Information Retrieval and Text Mining, ACM and Morgan
+  \& Claypool Publishers, 2016. Chapters 13, 17.
+\end{itemize}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
