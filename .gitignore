@@ -143,3 +143,6 @@ ENV/
 *.exe
 *.out
 *.app
+
+# Big files
+/home/bladefidz/Codes/data-mining/coursera/text-retrieval-and-search-engines/assignments/
