@@ -145,4 +145,5 @@ ENV/
 *.app
 
 # Big files
-/home/bladefidz/Codes/data-mining/coursera/text-retrieval-and-search-engines/assignments/
+coursera/text-retrieval-and-search-engines/assignments/
+coursera/text-retrieval-and-search-engines/notes/dataset/amazon-product-network/*.txt
