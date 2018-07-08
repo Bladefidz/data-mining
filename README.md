@@ -8,6 +8,8 @@ Data Mining study case and implementations.
 * [Overview of natural language processing techniques the concept of a retrieval model, and the basic idea of the vector space model](coursera/text-retrieval-and-search-engines/notes/week1.ipynb)
 * [The vector space model](coursera/text-retrieval-and-search-engines/notes/week2.ipynb)
 * [Information retrieval system evaluation](coursera/text-retrieval-and-search-engines/notes/week3.ipynb)
+* Implement information retrieval system using [MeTa](https://meta-toolkit.org/):
+    * [Stopword removal](coursera/text-retrieval-and-search-engines/notes/stopword-removal.md)
 * [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
 * [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
 * [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)
@@ -18,3 +20,4 @@ Data Mining study case and implementations.
 * [Overview of natural language processing techniques and text representation](coursera/text-mining-and-analytics/notes/week1.ipynb)
 * [Text data understanding](coursera/text-mining-and-analytics/notes/text%20data%20understanding.ipynb)
 * [Word association mining](coursera/text-mining-and-analytics/notes/week2.ipynb)
+* [Topic mining](coursera/text-mining-and-analytics/notes/week3.ipynb)

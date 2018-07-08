@@ -145,5 +145,7 @@ ENV/
 *.app
 
 # Big files
-coursera/text-retrieval-and-search-engines/assignments/
 coursera/text-retrieval-and-search-engines/notes/dataset/amazon-product-network/*.txt
+
+# Unnecessary files
+assignment_1-text-retrieval-and-search-engines/build
