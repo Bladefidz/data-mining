@@ -10,6 +10,7 @@ Data Mining study case and implementations.
 * [Information retrieval system evaluation](coursera/text-retrieval-and-search-engines/notes/week3.ipynb)
 * Implement information retrieval system using [MeTa](https://meta-toolkit.org/):
     * [Stopword removal](coursera/text-retrieval-and-search-engines/notes/stopword-removal.md)
+    * [Stemming](coursera/text-retrieval-and-search-engines/notes/stemming.md)
 * [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
 * [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
 * [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)
