@@ -131,7 +131,9 @@ void stopstem(const std::string& file, const cpptoml::table& config) {
       make_unique<tokenizers::icu_tokenizer>();
   stream = make_unique<filters::lowercase_filter>(std::move(stream));
   // Insert the line required to do stopword removal here
+  stream = make_unique<filters::list_filter>(std::move(stream), *stopwords);
   // Insert the line required to do stemming here (using Porter2 Stemmer)
+  stream = make_unique<filters::porter2_filter>(std::move(stream));
   stream = make_unique<filters::empty_sentence_filter>(std::move(stream));
 
   auto out_name = no_ext(file) + ".stopstem.txt";
