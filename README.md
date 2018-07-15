@@ -1,5 +1,11 @@
-# data-mining
-Data Mining study case and implementations.
+# Data Mining For Researchers and Developers
+
+This repository contains study cases and implementations of Data Mining. The primary resources taken from my experiences on [Data Mining Specialization at Coursera](https://www.coursera.org/specializations/data-mining). Almost all of notes I have written here contains Mathematical rigors, but some of them contains straight forward example of how implement data mining concept using [MeTa](https://meta-toolkit.org).
+
+## Configure and Troubleshoot MeTa
+
+* [Setup guide](https://meta-toolkit.org/setup-guide.html)
+* [Troubleshoot](troubleshoot-meta.md)
 
 
 ## Text Retrieval and Search Engine
@@ -15,6 +21,7 @@ Data Mining study case and implementations.
     * [Write custum function](coursera/text-retrieval-and-search-engines/notes/write-custom-function.md)
     * [MOOC dataset](coursera/text-retrieval-and-search-engines/notes/mooc-dataset.md)
     * [Indexing](coursera/text-retrieval-and-search-engines/notes/indexing.md)
+    * [Searching](coursera/text-retrieval-and-search-engines/notes/searching.md)
 * [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
 * [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
 * [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)

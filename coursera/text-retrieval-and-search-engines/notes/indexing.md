@@ -44,6 +44,23 @@ Here step-by-step building search engine for [mooc dataset](mooc-dataset.md) whi
 
     ```meta/build/index meta/config.toml```
 
-6. If the above command successfully executed, then it will created the inverted index and places it in **meta/build/moocs-inv**.
+6. The output should be similar to this:
+
+    ```
+    > Counting lines in file: [=================================] 100% ETA 00:00:00 
+    1531644629: [info]     Creating index: moocs/inv (/home/bladefidz/Codes/data-mining/meta/src/index/inverted_index.cpp:119)
+    > Tokenizing Docs: [========================================] 100% ETA 00:00:00 
+    > Merging: [================================================] 100% ETA 00:00:00 
+    1531644642: [info]     Created uncompressed postings file moocs/inv/postings.index (9.120000 MB) (/home/bladefidz/Codes/data-mining/meta/src/index/inverted_index.cpp:148)
+    > Compressing postings: [===================================] 100% ETA 00:00:00 
+    1531644642: [info]     Created compressed postings file (7.620000 MB) (/home/bladefidz/Codes/data-mining/meta/src/index/inverted_index.cpp:279)
+    1531644642: [info]     Done creating index: moocs/inv (/home/bladefidz/Codes/data-mining/meta/src/index/inverted_index.cpp:166)
+    Number of documents: 17972
+    Avg Doc Length: 358.238
+    Unique Terms: 160615
+    Index generation took: 14.709 seconds
+    ```
+
+6. If the above command successfully executed, then it will created the inverted index and places it in **meta/build/moocs/inv**.
 
 For more information, please read the documentation [here](https://meta-toolkit.org/overview-tutorial.html).
