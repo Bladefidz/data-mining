@@ -19,7 +19,7 @@ compilation terminated.
 
 ```
 
-## Solution
+### Solution
 
 Run this inside `build` directory:
 
