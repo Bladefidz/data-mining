@@ -2,6 +2,9 @@
 
 This repository contains study cases and implementations of Data Mining. The primary resources taken from my experiences on [Data Mining Specialization at Coursera](https://www.coursera.org/specializations/data-mining). Almost all of notes I have written here contains Mathematical rigors, but some of them contains straight forward example of how implement data mining concept using [MeTa](https://meta-toolkit.org).
 
+**Coution**: Some notes may incorrectly rendered by github, please consider to use [nbviewer](http://nbviewer.jupyter.org/) to get correctly rendered jupyter notebook. For example: [Information retrieval system evaluation](coursera/text-retrieval-and-search-engines/notes/week3.ipynb) could be opened using nbviewer like [this](http://nbviewer.jupyter.org/github/Bladefidz/data-mining/blob/master/coursera/text-retrieval-and-search-engines/notes/week3.ipynb).
+
+
 ## Configure and Troubleshoot MeTa
 
 * [Setup guide](https://meta-toolkit.org/setup-guide.html)
