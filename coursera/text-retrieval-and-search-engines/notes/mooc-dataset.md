@@ -1,6 +1,6 @@
 # MOOC Dataset
 
-The [MOOC dataset](../../../meta-compiled/moocs) contains the descriptions found on the webpages of arround 23,000 MOOCs (Massive Open Online Courses).
+The [MOOC dataset](../../../meta/data/moocs) contains the descriptions found on the webpages of arround 23,000 MOOCs (Massive Open Online Courses).
 
 Below the description of each file:
 
