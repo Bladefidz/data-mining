@@ -17,6 +17,9 @@ This repository contains study cases and implementations of Data Mining. The pri
 * [Overview of natural language processing techniques the concept of a retrieval model, and the basic idea of the vector space model](coursera/text-retrieval-and-search-engines/notes/week1.ipynb)
 * [The vector space model](coursera/text-retrieval-and-search-engines/notes/week2.ipynb)
 * [Information retrieval system evaluation](coursera/text-retrieval-and-search-engines/notes/week3.ipynb)
+* [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
+* [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
+* [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)
 * Implement information retrieval system using [MeTa](https://meta-toolkit.org/):
     * [Stopword removal](coursera/text-retrieval-and-search-engines/notes/stopword-removal.md)
     * [Stemming](coursera/text-retrieval-and-search-engines/notes/stemming.md)
@@ -25,9 +28,6 @@ This repository contains study cases and implementations of Data Mining. The pri
     * [MOOC dataset](coursera/text-retrieval-and-search-engines/notes/mooc-dataset.md)
     * [Indexing](coursera/text-retrieval-and-search-engines/notes/indexing.md)
     * [Searching](coursera/text-retrieval-and-search-engines/notes/searching.md)
-* [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
-* [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
-* [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)
 
 
 ## Text mining and analytics
