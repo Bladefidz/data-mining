@@ -23,7 +23,7 @@ using namespace meta;
 
 // pl2_ranker is a class that implements the pl2 ranking function. It is derived
 // from the base class ranker.
-class pl2_ranker : public index::ranker {
+class pl2_ranker : public index::ranking_function {
  private:
   // c_ and lambda_ are the parameters of pl2
   float c_ = 7;
@@ -124,7 +124,7 @@ void pl2_tune(const std::shared_ptr<index::dblru_inverted_index>& idx,
                                                            // list of the top
                                                            // 1000 documents for
                                                            // the current query
-        eval.avg_p(ranking, (*query).id(), 1000);  // eval.avg_p stores the
+        eval.avg_p(ranking, (query_id)(*query).id(), 1000);  // eval.avg_p stores the
                                                    // value of average precision
                                                    // for the current query in
                                                    // the instance eval
@@ -238,7 +238,7 @@ int main(int argc, char* argv[]) {
       query.content(content);
       allqueries.push_back(query);
       auto ranking = ranker->score(*idx, query, 1000);
-      eval.avg_p(ranking, query.id(), 1000);
+      eval.avg_p(ranking, (query_id)query.id(), 1000);
       i++;
     }
     float c = 7;
@@ -261,11 +261,11 @@ int main(int argc, char* argv[]) {
       std::cout << "Ranking query " << i++ << ": " << content << std::endl;
       auto ranking = ranker->score(*idx, query, 1000);
       std::cout << "Precision@10 for this query: "
-                << eval.precision(ranking, query.id(), 10) << std::endl;
+                << eval.precision(ranking, (query_id)query.id(), 10) << std::endl;
       if (argc == 3) {
         submission << std::setprecision(5) << ranking[0].score << ' ';
       }
-      eval.avg_p(ranking, query.id(), 1000);
+      eval.avg_p(ranking, (query_id)query.id(), 1000);
       std::cout << "Showing top 10 of " << ranking.size() << " results."
                 << std::endl;
       for (size_t i = 0; i < ranking.size() && i < 10; ++i) {
