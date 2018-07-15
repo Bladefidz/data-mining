@@ -70,8 +70,8 @@ float pl2_ranker::score_one(const index::score_data& sd) {
   float avg_dl = sd.avg_dl;      // Average document length in the corpus
   float tf = sd.doc_term_count;  // Raw term count in the document
   float pi = 3.14;               // Use this for pi - Do NOT use other values
-  float lambda = lambda_;        // pl2's parameter
-  float c = c_;                  // pl2's parameter
+  float lambda = lambda_;        // pl2's parameter, mean of poisson distribution
+  float c = c_;                  // pl2's parameter, free parameter
 
   /**
    * You should implement the ranking function after this comment.
@@ -80,8 +80,16 @@ float pl2_ranker::score_one(const index::score_data& sd) {
    * Use the function log2() to implement the logarithm
    * Use exp(1) to implement e
   **/
+  float term_frequency_normalized = tf * log2(1 + c * avg_dl / doc_len);
+  float term_frequency_regularized = term_frequency_normalized * log2(term_frequency_normalized / lambda);
+  float penalty = lambda + 1/12 * 1/term_frequency_normalized - term_frequency_normalized;
+  penalty = penalty * log2(exp(1));
+  float smoothing = 0.5 * log2(2 * pi * term_frequency_normalized);
+  float numerator = term_frequency_regularized + penalty + smoothing;
+  float denominator = term_frequency_normalized + 1;
+  float randomness = numerator / denominator;
 
-  return 0;  // Change 0 to the final score you calculated
+  return randomness;  // Change 0 to the final score you calculated
 }
 
 void pl2_tune(const std::shared_ptr<index::dblru_inverted_index>& idx,
@@ -134,9 +142,9 @@ void pl2_tune(const std::shared_ptr<index::dblru_inverted_index>& idx,
                                 // greater than maxmap
       {
         // You should only change the values of the following three assignments
-        maxmap = 0;     // Change 0 to the correct value
-        cmax = 0;       // Change 0 to the correct value
-        lambdamax = 0;  // Change 0 to the correct value
+        maxmap = eval.map();     // Change 0 to the correct value
+        cmax = cvalues[i];       // Change 0 to the correct value
+        lambdamax = lambdavalues[j];  // Change 0 to the correct value
       }
 
       eval.reset_stats();  // Deletes all the average precision values stored in
