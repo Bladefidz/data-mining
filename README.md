@@ -14,6 +14,7 @@ Data Mining study case and implementations.
     * [part-of-speech tagging](coursera/text-retrieval-and-search-engines/notes/part-of-speech-tagging.md)
     * [Write custum function](coursera/text-retrieval-and-search-engines/notes/write-custom-function.md)
     * [MOOC dataset](coursera/text-retrieval-and-search-engines/notes/mooc-dataset.md)
+    * [Indexing](coursera/text-retrieval-and-search-engines/notes/indexing.md)
 * [Probabilistic retrieval models and statistical language models](coursera/text-retrieval-and-search-engines/notes/week4.ipynb)
 * [Feedback techniques in information retrieval](coursera/text-retrieval-and-search-engines/notes/week5.ipynb)
 * [Optimize ranking of documents using machine learning And recommender systems](coursera/text-retrieval-and-search-engines/notes/week6.ipynb)

@@ -10,8 +10,9 @@ query-judgements = "../../meta/data/moocs/moocs-qrels.txt"
 querypath = "../../meta/data/moocs/"
 corpus = "line.toml"
 dataset = "moocs"
-forward-index = "moocs-fwd"
-inverted-index = "moocs-inv"
+# forward-index = "moocs-fwd"
+# inverted-index = "moocs-inv"
+index = "moocs"
 
 [[analyzers]]
 method = "ngram-word"
